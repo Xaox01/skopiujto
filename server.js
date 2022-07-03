@@ -1,9 +1,15 @@
 const express = require("express")
 const app = express()
 const http = require('http')
+const router  = express.Router();
+
 app.set("view engine", "ejs")
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({extended : false}));
+
+
+app.use('/users',require('./routes/users'));
 
 
 const Document = require("./models/Document")
@@ -13,6 +19,7 @@ mongoose.connect("mongodb+srv://admin:admin@skopiujtodb.3rhktel.mongodb.net/?ret
   useUnifiedTopology: true,
   useNewUrlParser: true,
 })
+
 
 
 app.get("/", (req, res) => {
@@ -25,6 +32,10 @@ Kliknij nowy tekst po prawej stronie by skopiować swój kod lub tekst po prawej
 
 app.get("/login", (req, res) => {
   res.render('login')
+})
+
+app.get("/register", (req, res) => {
+  res.render('register')
 })
 
 app.get("/new", (req, res) => {
@@ -72,3 +83,5 @@ if (port == null || port == "") {
 }
 app.listen(port);
 console.log('serwer uruchomiono na porcie ' + port)
+
+module.exports = router; 
