@@ -18,7 +18,7 @@ mongoose.connect("mongodb+srv://admin:admin@skopiujtodb.3rhktel.mongodb.net/?ret
 app.get("/", (req, res) => {
   const code = `Witamy w Skopiuj.to
 
-Kliknij nowy tekst po prawej stronie by skopiować swój kod lub tekst`
+Kliknij nowy tekst po prawej stronie by skopiować swój kod lub tekst po prawej stronie`
 
   res.render("code-display", { code, language: "plaintext" })
 })
