@@ -2,15 +2,31 @@ const express = require("express")
 const app = express()
 const http = require('http')
 const router  = express.Router();
+const session = require('express-session');
+const flash = require('connect-flash');
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.urlencoded({extended : false}));
-
+app.use(flash());
+app.use(session({
+  secret : 'secret',
+  resave : true,
+  saveUninitialized : true
+ }));
+ 
 
 app.use('/users',require('./routes/users'));
+ app.use((req,res,next)=> {
+   res.locals.success_msg = req.flash('success_msg');
+   res.locals.error_msg = req.flash('error_msg');
+   res.locals.error  = req.flash('error');
+ next();
+ })
+app.use(express.urlencoded({extended : false}))
 
+ 
 
 const Document = require("./models/Document")
 const User = require("./models/User")
