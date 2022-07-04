@@ -1,12 +1,12 @@
 <div class="buttons-wrapper">
-  <a href="/" class="logo">Skopiuj.to</a>
-  <div class="buttons">
-    <a href="/new" class="btn">Nowy</a>
-    <% if (locals.canSave) { %>
-      <button class="btn" type="submit">Zapisz</button>
-    <% } %>
-    <% if (locals.id != null) { %>
-      <a href="/<%= locals.id %>/duplicate" class="btn">Edytuj</a>
-    <% } %>
+    <a href="/" class="logo">Skopiuj.to</a>
+    <div class="buttons">
+      <a href="/new" class="btn">Nowy</a>
+      <% if (locals.canSave) { %>
+        <button class="btn" type="submit">Zapisz</button>
+      <% } %>
+      <% if (locals.id != null) { %>
+        <a href="/<%= locals.id %>/duplicate" class="btn">Edytuj</a>
+      <% } %>
+    </div>
   </div>
-</div>
