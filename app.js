@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
   
     res.render("code-display", { code, language: "plaintext" })
   })
-
+  
   app.get("/new", (req, res) => {
     res.render("new")
   })
@@ -84,9 +84,10 @@ app.get("/", (req, res) => {
       res.redirect("/")
     }
   })
-  
 
-app.use('/users',require('./routes/users'));
+  app.use('/users',require('./routes/index'));
+  app.use('/users',require('./routes/users'));
+  
 
 let port = process.env.PORT;
 if (port == null || port == "") {
