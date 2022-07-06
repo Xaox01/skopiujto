@@ -12,6 +12,10 @@ body {
   pre {
     margin: 0;
   }
+
+  p, a{
+    color: #7D7D7D;
+  }
   
   #code-display {
     padding-top: 0;
@@ -90,8 +94,13 @@ body {
   .btn:hover {
     background-color: #83E5FF;
   }
-  #changeStyle{
-    background-color: white;
-    position: absolute;
-    right: 12%;
+  
+  #header{
+    width: 100%;
+    height: 8%;
+    background-color: #1d3857;
+  }
+
+  #nick{
+    color: rgb(255, 255, 255);
   }
