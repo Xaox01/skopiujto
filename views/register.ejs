@@ -9,43 +9,52 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script>hljs.highlightAll();</script>
     <link rel="stylesheet" href="/styles.css" />
-    <title>Skopiuj.to</title>
+    <title>Skopiuj.to - rejestracja</title>
   </head>
   <body>
-<h1>Register</h1>
 <%- include ('./partials/messages') %>
-<form action="/users/register" method="POST">
-<div>
-    <label for="email">Email</label>
-    <input
-      type="email"
-      name="email"
-      placeholder="Enter Email"
-      value="<%= typeof email != 'undefined' ? email : '' %>"
-    />
+<div class="container mx-auto p-4 bg-white">
+  <div class="w-full md:w-1/2 lg:w-1/3 mx-auto my-12">
+    <h1 class="text-lg font-bold">Register</h1>
+    <form class="flex flex-col mt-4">
+      <input
+          type="text"
+          name="full-name"
+          class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+          placeholder="Full Name"
+      />
+      <input
+          type="email"
+          name="email"
+          class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+          placeholder="Email address"
+      />
+      <input
+          type="password"
+          name="password"
+          class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+          placeholder="Password"
+      />
+      <input
+          type="password"
+          name="repeat-password"
+          class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+          placeholder="Repeat Password"
+      />
+      <button
+          type="submit"
+          class="mt-4 px-4 py-3  leading-6 text-base rounded-md border border-transparent text-white focus:outline-none bg-blue-500 text-blue-100 hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
+      >
+        Register
+      </button>
+      <div class="flex flex-col items-center mt-5">
+        <p class="mt-1 text-xs font-light text-gray-500">
+          Register already?<a class="ml-1 font-medium text-blue-400">Sign in now</a>
+          </p>
+      </div>
+    </form>
   </div>
-  <div >
-    <label for="password">Password</label>
-    <input
-      type="password"
-      name="password"
-      placeholder="Create Password"
-      value="<%= typeof password != 'undefined' ? password : '' %>"
-    />
-  </div>
-  <div >
-    <label for="password2">Confirm Password</label>
-    <input
-      type="password"
-      name="password2"
-      placeholder="Confirm Password"
-      value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
-    />
-  </div>
-  <button type="submit" class="btn btn-primary btn-block">
-    Register
-  </button>
-</form>
+</div>
 <p >Have An Account? <a href="/users/login">Login</a></p>
 
 </body>
