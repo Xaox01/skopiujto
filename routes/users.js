@@ -22,7 +22,7 @@ passport.authenticate('local',{
   router.post('/register',(req,res)=>{
     const {name,email, password, password2} = req.body;
     let errors = [];
-    console.log(' Name ' + name+ ' email :' + email+ ' pass:' + password);
+    console.log(' Name: ' + name+ ' email:' + email+ ' pass:' + password);
     if(!name || !email || !password || !password2) {
         errors.push({msg : "Please fill in all fields"})
     }
