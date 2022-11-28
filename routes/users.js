@@ -24,16 +24,16 @@ passport.authenticate('local',{
     let errors = [];
     console.log(' Name: ' + name+ ' email:' + email+ ' pass:' + password);
     if(!name || !email || !password || !password2) {
-        errors.push({msg : "Please fill in all fields"})
+        errors.push({msg : "Wypełnij wszystkie pola!"})
     }
     //check if match
     if(password !== password2) {
-        errors.push({msg : "passwords dont match"});
+        errors.push({msg : "Hasła do siebie nie pasują!"});
     }
     
     //check if password is more than 6 characters
     if(password.length < 6 ) {
-        errors.push({msg : 'password atleast 6 characters'})
+        errors.push({msg : 'Hasło musi zawierać 6 znaków!'})
     }
     if(errors.length > 0 ) {
     res.render('register', {
@@ -47,7 +47,7 @@ passport.authenticate('local',{
        User.findOne({email : email}).exec((err,user)=>{
         console.log(user);   
         if(user) {
-            errors.push({msg: 'email already registered'});
+            errors.push({msg: 'Ten mail jest już zajęty!'});
             res.render('register',{errors,name,email,password,password2})  
            } else {
             const newUser = new User({
@@ -67,7 +67,7 @@ passport.authenticate('local',{
                     newUser.save()
                     .then((value)=>{
                         console.log(value)
-                        req.flash('success_msg','You have now registered!');
+                        req.flash('success_msg','Rejestracja się powiodła');
                         res.redirect('/users/login');
                     })
                     .catch(value=> console.log(value));

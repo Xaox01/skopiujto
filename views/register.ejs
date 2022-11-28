@@ -18,10 +18,11 @@
     <form class="flex flex-col mt-4" action="/users/register" method="POST">
       <label for="name"></label>
       <input
+          id="name"
           type="text"
           name="name"
           class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-          placeholder="Name"
+          placeholder="Nick"
           value="<%= typeof name != 'undefined' ? name : '' %>"
       />
       <label for="email"></label>
@@ -29,7 +30,7 @@
           type="email"
           name="email"
           class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-          placeholder="Email address"
+          placeholder="Email"
           value="<%= typeof email != 'undefined' ? email : '' %>"
       />
       <label for="password"></label>
@@ -37,7 +38,7 @@
           type="password"
           name="password"
           class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-          placeholder="Password"
+          placeholder="Hasło"
           value="<%= typeof password != 'undefined' ? password : '' %>"
       />
       <label for="password2"></label>
@@ -45,21 +46,22 @@
           type="password"
           name="password2"
           class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-          placeholder="Repeat Password"
+          placeholder="Powtórz Hasło"
           value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
       />
       <button
           type="submit"
           class="mt-4 px-4 py-3  leading-6 text-base rounded-md border border-transparent text-white focus:outline-none bg-blue-500 text-blue-100 hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
       >
-        Register
+        Zarejestruj sie
       </button>
       <div class="flex flex-col items-center mt-5">
         <p class="mt-1 text-xs font-light text-gray-500">
-          Register already?<a href="/users/login" class="ml-1 font-medium text-blue-400">Sign in now</a>
+          jestes zarejestrowany?<a href="/users/login" class="ml-1 font-medium text-blue-400">Zaloguj sie</a>
           </p>
       </div>
     </form>
   </div>
 </div>
+<script src="/script.js"></script>
 </body>
