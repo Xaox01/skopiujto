@@ -1,2 +1,4 @@
-const nameval = document.form.name
- console.log(nameval)
+if(nick === 'Admin'){
+    console.log('s')
+}
+console.log('s')

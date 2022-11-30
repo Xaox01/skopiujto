@@ -27,6 +27,7 @@
       />
       <label for="email"></label>
       <input
+          id="email"
           type="email"
           name="email"
           class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
@@ -50,6 +51,7 @@
           value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
       />
       <button
+          onclick="validateForm()"
           type="submit"
           class="mt-4 px-4 py-3  leading-6 text-base rounded-md border border-transparent text-white focus:outline-none bg-blue-500 text-blue-100 hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
       >
@@ -63,5 +65,5 @@
     </form>
   </div>
 </div>
-<script src="/script.js"></script>
+<script src="/validation.js"></script>
 </body>

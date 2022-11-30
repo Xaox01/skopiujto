@@ -1,1 +1,1 @@
-GET http://localhost:8000/users/register
+GET http://localhost:8000/admin

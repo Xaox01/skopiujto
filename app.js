@@ -7,6 +7,7 @@ const expressEjsLayout = require('express-ejs-layouts')
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require("passport");
+const {ensureAuthenticated} = require('./config/auth') 
 
 
 
@@ -53,6 +54,10 @@ app.get("/", (req, res) => {
   app.get("/new", (req, res) => {
     res.render("new")
   })
+
+  app.get("/admin", ensureAuthenticated, (req, res) =>{
+    res.render("admin")
+  })
   
   app.post("/save", async (req, res) => {
     const value = req.body.value
@@ -84,6 +89,16 @@ app.get("/", (req, res) => {
       res.redirect("/")
     }
   })
+
+  function setUser(req, res, next) {
+  const userId = req.body.userId
+  if (userId) {
+    req.user = users.find(user => user.id === userId)
+  }
+  next()
+}
+
+  
 
   app.use('/users',require('./routes/index'));
   app.use('/users',require('./routes/users'));

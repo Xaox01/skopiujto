@@ -6,9 +6,16 @@ const {ensureAuthenticated} = require('../config/auth')
 router.get('/register', (req,res)=>{
     res.render('register');
 })
+router.get('/admin', ensureAuthenticated, (req,res)=>{
+    res.render('admin',{
+        
+        user: req.role
+    });
+})
 router.get('/dashboard',ensureAuthenticated,(req,res)=>{
     res.render('dashboard',{
         user: req.user
+  
     });
 })
 module.exports = router; 

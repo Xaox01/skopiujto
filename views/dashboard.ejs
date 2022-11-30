@@ -31,10 +31,16 @@
         </div>
       </div>
     </nav>
-      <center><div id="nick"><%= user.name %>, welcome to dashboard!</p></div></center>
-    
-  
-  <script src="style.js"></script>
+      <center><div id="nick"<% if (user) { %>
+      <h2><%= user.name %></h2>
+      <% } %>, welcome to dashboard! your mail: <%= user.email %> your role: <%= user.role %> </p></div></center>
+
+
+      <div id="nick"> <% if (user.role == 1) { %>
+        <h2>welcome admin</h2>
+      <% } %></div>
+      
+
   </body>
   </html>
  
