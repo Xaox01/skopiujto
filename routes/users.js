@@ -4,8 +4,21 @@ const User = require("../models/user");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const { uuid } = require('uuidv4');
+const nodemailer = require("nodemailer");
+const smtpTransport = require('nodemailer-smtp-transport');
 
-//login handle
+
+const transporter = nodemailer.createTransport({
+    host: "poczta.o2.pl",
+    port: 465,
+    auth: {
+    user: "legia1000.2000@o2.pl",
+    pass: "Taktaknie123%"
+  }
+});
+
+
+//login handleSS
 router.get('/login',(req,res)=>{
     res.render('login');
 })
@@ -29,11 +42,14 @@ passport.authenticate('local',{
     if(!name || !email || !password || !password2) {
         errors.push({msg : "Wypełnij wszystkie pola!"})
     }
-    if(email.length < 6 ) {
+    if(email.length < 6 || email.length > 40 ) {
         errors.push({msg : "Mail jest nieprawidłowy"});
     }
     if(name.length < 4 ) {
         errors.push({msg : "nick musi zawierac przynajmniej 4 znaki!"});
+    }
+    if(name.length > 25 ) {
+        errors.push({msg : "nick jest za długi!"});
     }
     //check if match
     if(password !== password2) {
@@ -80,6 +96,19 @@ passport.authenticate('local',{
                     //save user
                     newUser.save()
                     .then((value)=>{
+                        //send mail to user
+                        const mailOptions = {
+                            from: 'legia1000.2000@tlen.pl', // sender address
+                            to: email, // list of receivers
+                            subject: 'Potwierdzenie rejestracji', // Subject line
+                            html: 'Hej ' + name // plain text body
+                        }
+                        transporter.sendMail(mailOptions, function (err, info) {
+                            if(err)
+                                console.log(err)
+                            else
+                                console.log(info);
+                        })                 
                         console.log(value)
                         req.flash('success_msg','Rejestracja się powiodła');
                         res.redirect('/users/login');
@@ -91,6 +120,7 @@ passport.authenticate('local',{
        })
     }
     })
+    
 //logout
 router.get('/logout',(req,res)=>{
 req.logout();

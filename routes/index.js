@@ -8,14 +8,13 @@ router.get('/register', (req,res)=>{
 })
 router.get('/admin', ensureAuthenticated, (req,res)=>{
     res.render('admin',{
-        
-        user: req.role
+        user: req.user
     });
 })
 router.get('/dashboard',ensureAuthenticated,(req,res)=>{
     res.render('dashboard',{
         user: req.user
-  
     });
 })
+
 module.exports = router; 

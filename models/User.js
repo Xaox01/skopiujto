@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const UserSchema  = new mongoose.Schema({
-  name :{
+    name :{
       type  : String,
       required : true
   } ,
@@ -20,6 +20,11 @@ date :{
     type  : String
 }
 });
-const User= mongoose.model('User',UserSchema);
+const ROLES = {
+    ADMIN: "ADMIN",
+    SUPERVISOR: "SUPERVISOR"
+}
 
+
+const User= mongoose.model('User',UserSchema);
 module.exports = User;
