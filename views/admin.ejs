@@ -31,12 +31,20 @@
           </div>
         </div>
       </nav>
-        
-          <h1>welcome admin</h1>
-  
-        
-       
-        
+
+      <!--admin-->
+      <% if (user.role == 1) { %>
+        <center><div id="header"><h2>welcome admin!</h2></div></center>
+        <div class="flex justify-between ...">
+            <div><center><div id="users"><h2>last users</h2></div></center></div>
+            <div><div><center><div id="threads"><h2>last threads</h2></div></center></div></div>
+          </div>
+      <% } %>
+      <!--supervisior-->
+      <% if (user.role == 0) { %>
+        <center><span style="color: red;">No permission</span></center>
+      <% } %>
+      
   
     </body>
     </html>

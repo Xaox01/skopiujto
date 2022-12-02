@@ -50,10 +50,10 @@ app.get("/", (req, res) => {
   
     res.render("code-display", { code, language: "plaintext" })
   })
-  
   app.get("/new", (req, res) => {
     res.render("new")
   })
+ 
 
   app.get("/admin", ensureAuthenticated, (req, res) =>{
     res.render("admin")
@@ -78,22 +78,6 @@ app.get("/", (req, res) => {
       res.redirect(`/${id}`)
     }
   })
-
-  router.delete("/delete/:id", async (req, res) => {
-    try {
-      // First find the user admin wants to delete
-      const user = await User.findById(req.params.id) // getting id from the id you put in url
-  
-      // Make sure the user who wants to delete another user is an admin
-      if (user.admin) {
-         await user.deleteOne() // This deletes the user
-      } else {
-         res.status(403).json("You are not allowed to do this action!")
-      }
-    } catch (error) {
-      res.sendStatus(500);
-    }
-  });
   
   app.get("/:id", async (req, res) => {
     const id = req.params.id

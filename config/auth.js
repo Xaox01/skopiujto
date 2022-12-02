@@ -1,4 +1,3 @@
-
 module.exports = {
     ensureAuthenticated : function(req,res,next) {
         if(req.isAuthenticated()) {
@@ -8,3 +7,4 @@ module.exports = {
         res.redirect('/users/login');
     }
 }
+
